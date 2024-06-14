@@ -1,6 +1,6 @@
 # Quiz App
 
-Screenshot 2024-06-14 234528.png
+![Quiz App Screenshot](quiz-screenshot.png)
 
 
 ## Overview
