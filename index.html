@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #252525;
+        }
+        #quiz-container {
+            font-family: Arial, sans-serif;
+            background-color: #252525;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            width: 90%;
+            max-width: 600px;
+            margin: 20px;
+            color: white;
+            position: relative;
+        }
+        #score-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .question-container {
+            margin: 30px;
+            font-size: 1.3rem;
+        }
+        .choices button {
+            display: block;
+            margin: 5px 0;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 4px;
+            background-color: #8bc3ff;
+            color: rgb(0, 0, 0);
+            font-size: 16px;
+        }
+        .choices button:hover {
+            background-color: #65aefd;
+        }
+        .correct {
+            background-color: rgb(97, 255, 97) !important;
+        }
+        .incorrect {
+            background-color: rgb(255, 126, 126) !important;
+        }
+        .history {
+            margin-top: 20px;
+            max-height: 150px;
+            overflow-y: auto;
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .history h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+            color: #8bc3ff;
+        }
+        .history ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .history li {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+        .history li.correct-answer {
+            color: rgb(97, 255, 97);
+        }
+        .history li.incorrect-answer {
+            color: rgb(255, 126, 126);
+        }
+        .history li:last-child {
+            margin-bottom: 0;
+        }
+        .btn {
+            margin: 10px 5px;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            background-color: #65aefd;
+            color: rgb(0, 0, 0);
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #3a99ff;
+        }
+        .hidden {
+            display: none;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+        }
+        .icon {
+            font-size: 20px;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #65aefd;
+            border-radius: 4px;
+        }
+        #play-again-btn{
+            background-color: gold;
+        }
+        #play-again-btn:hover{
+            background-color: rgb(211, 180, 3);
+        }
+    </style>
+</head>
+<body>
+    <audio id="correct-sound">
+        <source src="rightsound.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <audio id="incorrect-sound">
+        <source src="wrongsound.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+<div id="quiz-container">
+    <div id="score-container">Score: <span id="score">0</span></div>
+    <div id="question-container" class="question-container">
+        <div id="question"></div>
+        <div id="choices" class="choices"></div>
+    </div>
+    <div class="navigation">
+        <button id="prev-btn" class="btn"><span class="icon">&#9664;</span> Previous</button>
+        <button id="next-btn" class="btn">Next <span class="icon">&#9654;</span></button>
+
+    </div>
+    <div class="navigation">
+        <button id="end-quiz-btn" class="btn">End Quiz</button>
+        <button id="play-again-btn" class="btn hidden">Play Again</button>
+    </div>
+    <div class="history">
+        <h3>History</h3>
+        <ul id="history-list"></ul>
+    </div>
+</div>
+
+<script>
+   const questions = [
+    {
+        "question": "What is the main function of an operating system?",
+        "choices": ["To compile programs", "To manage computer hardware and software resources", "To perform calculations", "To edit documents"],
+        "answer": "To manage computer hardware and software resources"
+    },
+    {
+        "question": "Which data structure uses FIFO (First In First Out) principle?",
+        "choices": ["Stack", "Queue", "Tree", "Graph"],
+        "answer": "Queue"
+    },
+    {
+        "question": "Who is known as the father of computer science?",
+        "choices": ["Alan Turing", "Charles Babbage", "John von Neumann", "Ada Lovelace"],
+        "answer": "Alan Turing"
+    },
+    {
+        "question": "What does 'HTTP' stand for?",
+        "choices": ["HyperText Transfer Protocol", "HyperText Transmission Protocol", "Hyperlink Transfer Protocol", "Hyperlink Text Protocol"],
+        "answer": "HyperText Transfer Protocol"
+    },
+    {
+        "question": "Which of the following is not a programming language?",
+        "choices": ["Python", "JavaScript", "HTML", "C++"],
+        "answer": "HTML"
+    },
+    {
+        "question": "What does 'RAM' stand for in computing?",
+        "choices": ["Read Access Memory", "Random Access Memory", "Run Access Memory", "Randomly Allocated Memory"],
+        "answer": "Random Access Memory"
+    },
+    {
+        "question": "Which of the following is a search algorithm?",
+        "choices": ["Bubble Sort", "Binary Search", "Quick Sort", "Merge Sort"],
+        "answer": "Binary Search"
+    },
+    {
+        "question": "What is the primary purpose of the CPU?",
+        "choices": ["To store data", "To manage network connections", "To perform calculations and execute instructions", "To display graphics"],
+        "answer": "To perform calculations and execute instructions"
+    },
+    {
+        "question": "Which company developed the Java programming language?",
+        "choices": ["Microsoft", "Apple", "Sun Microsystems", "IBM"],
+        "answer": "Sun Microsystems"
+    },
+    {
+        "question": "Which type of loop checks the condition at the end of the loop?",
+        "choices": ["For Loop", "While Loop", "Do-While Loop", "Foreach Loop"],
+        "answer": "Do-While Loop"
+    }
+];
+
+let currentQuestionIndex = 0;
+let score = 0;
+const questionContainer = document.getElementById("question");
+const choicesContainer = document.getElementById("choices");
+const scoreElement = document.getElementById("score");
+const historyList = document.getElementById("history-list");
+const endQuizBtn = document.getElementById("end-quiz-btn");
+const playAgainBtn = document.getElementById("play-again-btn");
+const nextBtn = document.getElementById("next-btn");
+const prevBtn = document.getElementById("prev-btn");
+const motivationalQuote = document.getElementById("motivational-quote");
+
+function loadQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    questionContainer.textContent = currentQuestion.question;
+    choicesContainer.innerHTML = "";
+
+    currentQuestion.choices.forEach(choice => {
+        const button = document.createElement("button");
+        button.textContent = choice;
+        button.addEventListener("click", () => checkAnswer(choice));
+        choicesContainer.appendChild(button);
+    });
+
+    updateNavigationButtons();
+}
+
+function checkAnswer(choice) {
+    const currentQuestion = questions[currentQuestionIndex];
+    const buttons = choicesContainer.getElementsByTagName("button");
+
+    if (choice === currentQuestion.answer) {
+        score++;
+        scoreElement.textContent = score;
+    }
+
+    for (let button of buttons) {
+        button.disabled = true;
+        if (button.textContent === currentQuestion.answer) {
+            button.classList.add("correct");
+        } else {
+            button.classList.add("incorrect");
+        }
+    }
+
+    addToHistory(currentQuestion.question, choice, currentQuestion.answer);
+}
+
+function addToHistory(question, chosenAnswer, correctAnswer) {
+    const listItem = document.createElement("li");
+    listItem.textContent = `Q: ${question} - Your Answer: ${chosenAnswer} - Correct Answer: ${correctAnswer}`;
+    if (chosenAnswer === correctAnswer) {
+        listItem.classList.add("correct-answer");
+    } else {
+        listItem.classList.add("incorrect-answer");
+    }
+    historyList.appendChild(listItem);
+}
+
+function endQuiz() {
+    questionContainer.textContent = "Quiz Finished!";
+    choicesContainer.innerHTML = "";
+    nextBtn.classList.add("hidden");
+    prevBtn.classList.add("hidden");
+    endQuizBtn.classList.add("hidden");
+    playAgainBtn.classList.remove("hidden");
+    showMotivationalQuote();
+}
+
+function resetQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    scoreElement.textContent = score;
+    historyList.innerHTML = "";
+    loadQuestion();
+    nextBtn.classList.remove("hidden");
+    prevBtn.classList.add("hidden");
+    endQuizBtn.classList.remove("hidden");
+    playAgainBtn.classList.add("hidden");
+    hideMotivationalQuote();
+}
+
+function updateNavigationButtons() {
+    if (currentQuestionIndex === 0) {
+        prevBtn.classList.add("hidden");
+    } else {
+        prevBtn.classList.remove("hidden");
+    }
+
+    if (currentQuestionIndex === questions.length - 1) {
+        nextBtn.classList.add("hidden");
+        playAgainBtn.classList.remove("hidden");
+    } else {
+        nextBtn.classList.remove("hidden");
+        playAgainBtn.classList.add("hidden");
+    }
+}
+
+function nextQuestion() {
+    if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        loadQuestion();
+    }
+}
+
+function prevQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        loadQuestion();
+    }
+}
+
+function showMotivationalQuote() {
+    motivationalQuote.classList.remove("hidden");
+    setTimeout(() => {
+        motivationalQuote.querySelector(".typing-effect").style.borderRight = "none";
+    }, 3000); // Adjust timing based on typing animation duration
+}
+
+function hideMotivationalQuote() {
+    motivationalQuote.classList.add("hidden");
+    motivationalQuote.querySelector(".typing-effect").style.borderRight = "3px solid #65aefd"; // Reset border for next display
+}
+
+endQuizBtn.addEventListener("click", endQuiz);
+playAgainBtn.addEventListener("click", resetQuiz);
+nextBtn.addEventListener("click", nextQuestion);
+prevBtn.addEventListener("click", prevQuestion);
+
+loadQuestion();
+
+
+
+// check answer ring 
+
+function checkAnswer(choice) {
+    const currentQuestion = questions[currentQuestionIndex];
+    const buttons = choicesContainer.getElementsByTagName("button");
+
+    if (choice === currentQuestion.answer) {
+        score++;
+        scoreElement.textContent = score;
+        playCorrectSound();
+    } else {
+        playIncorrectSound();
+    }
+
+    for (let button of buttons) {
+        button.disabled = true;
+        if (button.textContent === currentQuestion.answer) {
+            button.classList.add("correct");
+        } else {
+            button.classList.add("incorrect");
+        }
+    }
+
+    addToHistory(currentQuestion.question, choice, currentQuestion.answer);
+}
+
+function playCorrectSound() {
+    const correctSound = document.getElementById("correct-sound");
+    correctSound.currentTime = 0; // Reset sound to start
+    correctSound.play();
+}
+
+function playIncorrectSound() {
+    const incorrectSound = document.getElementById("incorrect-sound");
+    incorrectSound.currentTime = 0; // Reset sound to start
+    incorrectSound.play();
+}
+
+
+// clicked-sound effect added
+
+// Function to play the clicked sound
+function playClickedSound() {
+    const audio = new Audio('clickedsound.mp3');
+    audio.play();
+}
+
+// Event listeners for the buttons
+nextBtn.addEventListener("click", () => {
+    playClickedSound();
+    nextQuestion();
+});
+
+prevBtn.addEventListener("click", () => {
+    playClickedSound();
+    prevQuestion();
+});
+
+playAgainBtn.addEventListener("click", () => {
+    playClickedSound();
+    resetQuiz();
+});
+
+// Event listener for End Quiz button
+endQuizBtn.addEventListener("click", () => {
+    playClickedSound();
+    endQuiz();
+});
+
+</script>
+
+</body>
+</html>
