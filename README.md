@@ -31,4 +31,4 @@ Contributions are welcome! Follow these steps:
 ## Credits
 - Author: Raju Ghimire
 - Email: rajughimire024@gmail.com
-- GitHub: [Your GitHub Profile](https://github.com/helloiamraju)
+- GitHub: [Raju's GitHub Profile](https://github.com/helloiamraju)
