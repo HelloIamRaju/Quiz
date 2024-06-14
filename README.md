@@ -8,12 +8,12 @@ This project is a web-based quiz application designed to provide an interactive 
 ## Features
 - **Interactive Quiz**: Engaging multiple-choice questions.
 - **Responsive Design**: Ensures usability on desktop, tablet, and mobile.
-- **Score Tracking**: Tracks user scores and provides feedback.
+- **Score Tracking**: Tracks user scores.
 - **User-Friendly Interface**: Intuitive design for easy navigation.
 
 ## Technologies Used
 - **Frontend**: HTML, CSS, JavaScript (ES6+)
-- **Frameworks/Libraries**: Bootstrap, jQuery
+- **Frameworks/Libraries**: None
 - **Version Control**: Git, GitHub
 
 ## Installation and Usage
@@ -31,4 +31,4 @@ Contributions are welcome! Follow these steps:
 ## Credits
 - Author: Raju Ghimire
 - Email: rajughimire024@gmail.com
-- GitHub: [Your GitHub Profile](https://github.com/your-username)
+- GitHub: [Your GitHub Profile](https://github.com/helloiamraju)
