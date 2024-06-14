@@ -1,7 +1,6 @@
 # Quiz App
 
-![App Screenshot](Screenshot 2024-06-14 234528.png
-)
+![App Screenshot](Screenshot2024-06-14234528.png)
 
 ## Overview
 This project is a web-based quiz application designed to provide users with an interactive experience. It features multiple-choice questions on various topics, ensuring an engaging user interaction. The app is built with a focus on responsive design to ensure optimal usability across different devices and screen sizes.
