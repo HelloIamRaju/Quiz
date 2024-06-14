@@ -2,37 +2,33 @@
 
 ![Quiz App Screenshot](screenshotofquizapp.png)
 
-
 ## Overview
-This project is a web-based quiz application designed to provide users with an interactive experience. It features multiple-choice questions on various topics, ensuring an engaging user interaction. The app is built with a focus on responsive design to ensure optimal usability across different devices and screen sizes.
+This project is a web-based quiz application designed to provide an interactive experience with multiple-choice questions on various topics. It emphasizes responsive design for optimal usability across devices.
 
 ## Features
-- **Interactive Quiz**: Engaging multiple-choice questions on various topics.
-- **Responsive Design**: Ensures usability and functionality across desktop, tablet, and mobile devices.
-- **Score Tracking**: Keeps track of users' scores and provides feedback at the end of the quiz.
-- **User-Friendly Interface**: Intuitive design for easy navigation and interaction.
+- **Interactive Quiz**: Engaging multiple-choice questions.
+- **Responsive Design**: Ensures usability on desktop, tablet, and mobile.
+- **Score Tracking**: Tracks user scores and provides feedback.
+- **User-Friendly Interface**: Intuitive design for easy navigation.
 
 ## Technologies Used
 - **Frontend**: HTML, CSS, JavaScript (ES6+)
-- **Frameworks/Libraries**: Bootstrap (for responsive design), jQuery (for DOM manipulation)
-- **Version Control**: Git, GitHub (for project management and collaboration)
+- **Frameworks/Libraries**: Bootstrap, jQuery
+- **Version Control**: Git, GitHub
 
 ## Installation and Usage
-1. Clone the repository:
-2. Open `index.html` in your preferred web browser.
+1. Clone the repository.
+2. Open `index.html` in your web browser.
 
 ## How to Contribute
-Contributions are welcome! Here's how you can contribute to the project:
+Contributions are welcome! Follow these steps:
 - Fork the repository.
 - Create a new branch (`git checkout -b feature/new-feature`).
-- Make your changes.
-- Commit your changes (`git commit -am 'Add new feature'`).
-- Push to the branch (`git push origin feature/new-feature`).
-- Create a new Pull Request.
+- Make changes and commit (`git commit -am 'Add new feature'`).
+- Push changes (`git push origin feature/new-feature`).
+- Create a Pull Request.
 
 ## Credits
 - Author: Raju Ghimire
 - Email: rajughimire024@gmail.com
 - GitHub: [Your GitHub Profile](https://github.com/your-username)
-
-
