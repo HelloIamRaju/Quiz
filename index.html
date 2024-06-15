@@ -164,56 +164,206 @@
 <script>
    const questions = [
     {
-        "question": "What is the main function of an operating system?",
-        "choices": ["To compile programs", "To manage computer hardware and software resources", "To perform calculations", "To edit documents"],
-        "answer": "To manage computer hardware and software resources"
+        "question": "What is the purpose of an IP address?",
+        "choices": [
+            "To identify the type of computer",
+            "To manage network traffic",
+            "To uniquely identify a device on a network",
+            "To encrypt data transmissions"
+        ],
+        "answer": "To uniquely identify a device on a network"
     },
     {
-        "question": "Which data structure uses FIFO (First In First Out) principle?",
-        "choices": ["Stack", "Queue", "Tree", "Graph"],
-        "answer": "Queue"
+        "question": "What does DHCP stand for in networking?",
+        "choices": [
+            "Dynamic Host Control Protocol",
+            "Dynamic Host Configuration Protocol",
+            "Dynamic Hardware Control Protocol",
+            "Dynamic Host Connectivity Protocol"
+        ],
+        "answer": "Dynamic Host Configuration Protocol"
     },
     {
-        "question": "Who is known as the father of computer science?",
-        "choices": ["Alan Turing", "Charles Babbage", "John von Neumann", "Ada Lovelace"],
-        "answer": "Alan Turing"
+        "question": "What is a MAC address?",
+        "choices": [
+            "An address used by routers to forward data packets",
+            "An address used to identify websites",
+            "An address used to uniquely identify a network interface controller",
+            "An address used for storing data in memory"
+        ],
+        "answer": "An address used to uniquely identify a network interface controller"
     },
     {
-        "question": "What does 'HTTP' stand for?",
-        "choices": ["HyperText Transfer Protocol", "HyperText Transmission Protocol", "Hyperlink Transfer Protocol", "Hyperlink Text Protocol"],
+        "question": "What protocol is used to send email?",
+        "choices": [
+            "FTP (File Transfer Protocol)",
+            "HTTP (Hypertext Transfer Protocol)",
+            "SMTP (Simple Mail Transfer Protocol)",
+            "POP (Post Office Protocol)"
+        ],
+        "answer": "SMTP (Simple Mail Transfer Protocol)"
+    },
+    {
+        "question": "What does DNS stand for?",
+        "choices": [
+            "Dynamic Name Server",
+            "Domain Name Service",
+            "Data Network Security",
+            "Digital Network Service"
+        ],
+        "answer": "Domain Name Service"
+    },
+    {
+        "question": "What is the function of a router in a network?",
+        "choices": [
+            "To connect multiple networks together",
+            "To filter spam emails",
+            "To provide wireless internet access",
+            "To store website data"
+        ],
+        "answer": "To connect multiple networks together"
+    },
+    {
+        "question": "Which OSI layer is responsible for error detection and correction?",
+        "choices": [
+            "Physical layer",
+            "Data link layer",
+            "Transport layer",
+            "Session layer"
+        ],
+        "answer": "Data link layer"
+    },
+    {
+        "question": "What is the purpose of a firewall?",
+        "choices": [
+            "To boost network speed",
+            "To provide wireless connectivity",
+            "To prevent unauthorized access to or from a private network",
+            "To manage DNS servers"
+        ],
+        "answer": "To prevent unauthorized access to or from a private network"
+    },
+    {
+        "question": "What is a subnet mask?",
+        "choices": [
+            "A number that identifies a specific network",
+            "A type of malware",
+            "A security protocol for email",
+            "A number that separates IP addresses"
+        ],
+        "answer": "A number that identifies a specific network"
+    },
+    {
+        "question": "What is the purpose of NAT (Network Address Translation)?",
+        "choices": [
+            "To encrypt network traffic",
+            "To translate domain names into IP addresses",
+            "To manage network devices remotely",
+            "To allow multiple devices on a local network to share a single public IP address"
+        ],
+        "answer": "To allow multiple devices on a local network to share a single public IP address"
+    },
+    {
+        "question": "What is the difference between TCP and UDP?",
+        "choices": [
+            "TCP is connection-oriented, while UDP is connectionless",
+            "TCP uses port numbers, while UDP does not",
+            "TCP is faster for video streaming, while UDP is better for web browsing",
+            "TCP is more secure than UDP"
+        ],
+        "answer": "TCP is connection-oriented, while UDP is connectionless"
+    },
+    {
+        "question": "What does HTTP stand for?",
+        "choices": [
+            "HyperText Transfer Protocol",
+            "High Transmission Protocol",
+            "Home Transfer Protocol",
+            "Host Text Protocol"
+        ],
         "answer": "HyperText Transfer Protocol"
     },
     {
-        "question": "Which of the following is not a programming language?",
-        "choices": ["Python", "JavaScript", "HTML", "C++"],
-        "answer": "HTML"
+        "question": "What is a VLAN (Virtual Local Area Network)?",
+        "choices": [
+            "A network that spans a large geographical area",
+            "A network that uses satellite connections",
+            "A logical network segment that groups devices based on their roles or functions",
+            "A network protocol for secure file transfers"
+        ],
+        "answer": "A logical network segment that groups devices based on their roles or functions"
     },
     {
-        "question": "What does 'RAM' stand for in computing?",
-        "choices": ["Read Access Memory", "Random Access Memory", "Run Access Memory", "Randomly Allocated Memory"],
-        "answer": "Random Access Memory"
+        "question": "What is a DNS resolver?",
+        "choices": [
+            "A device that forwards data packets between networks",
+            "A server that translates domain names into IP addresses",
+            "A type of network cable",
+            "A software program for detecting network intrusions"
+        ],
+        "answer": "A server that translates domain names into IP addresses"
     },
     {
-        "question": "Which of the following is a search algorithm?",
-        "choices": ["Bubble Sort", "Binary Search", "Quick Sort", "Merge Sort"],
-        "answer": "Binary Search"
+        "question": "What is a proxy server?",
+        "choices": [
+            "A server that hosts websites",
+            "A server that filters internet content",
+            "A type of network cable",
+            "A server that manages email communications"
+        ],
+        "answer": "A server that filters internet content"
     },
     {
-        "question": "What is the primary purpose of the CPU?",
-        "choices": ["To store data", "To manage network connections", "To perform calculations and execute instructions", "To display graphics"],
-        "answer": "To perform calculations and execute instructions"
+        "question": "What is the purpose of ARP (Address Resolution Protocol)?",
+        "choices": [
+            "To find the physical address (MAC address) of a device on the same network",
+            "To encrypt data transmissions",
+            "To manage network resources",
+            "To diagnose network connectivity issues"
+        ],
+        "answer": "To find the physical address (MAC address) of a device on the same network"
     },
     {
-        "question": "Which company developed the Java programming language?",
-        "choices": ["Microsoft", "Apple", "Sun Microsystems", "IBM"],
-        "answer": "Sun Microsystems"
+        "question": "What is a packet in networking?",
+        "choices": [
+            "A device for sending emails",
+            "A unit of data that is transmitted over a network",
+            "A type of network cable",
+            "A security protocol for wireless networks"
+        ],
+        "answer": "A unit of data that is transmitted over a network"
     },
     {
-        "question": "Which type of loop checks the condition at the end of the loop?",
-        "choices": ["For Loop", "While Loop", "Do-While Loop", "Foreach Loop"],
-        "answer": "Do-While Loop"
+        "question": "What is the function of an SSL certificate?",
+        "choices": [
+            "To manage network security",
+            "To compress data transmissions",
+            "To verify the identity of a website and encrypt data transmissions",
+            "To block malicious websites"
+        ],
+        "answer": "To verify the identity of a website and encrypt data transmissions"
+    },
+    {
+        "question": "What is the purpose of ICMP (Internet Control Message Protocol)?",
+        "choices": [
+            "To regulate internet traffic",
+            "To manage DNS servers",
+            "To diagnose network connectivity issues",
+            "To encrypt email communications"
+        ],
+        "answer": "To diagnose network connectivity issues"
+    },
+    {
+        "question": "What does FTP stand for in networking?",
+        "choices": [
+            "File Transfer Protocol",
+            "File Testing Protocol",
+            "Fast Transmission Protocol",
+            "File Transcoding Protocol"
+        ],
+        "answer": "File Transfer Protocol"
     }
-];
+]
 
 let currentQuestionIndex = 0;
 let score = 0;
